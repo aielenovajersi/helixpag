@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0a1b">
+  <title>Confirmação de acesso</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b0a1b; --panel:#15142b; --text:#f8f7ff; --muted:#b8b7d2; --accent:#a78bfa; --accent2:#67e8f9; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background: radial-gradient(ellipse at 50% 0%, #27204d 0%, var(--bg) 58%); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .wrap { width:min(100%, 460px); }
+    .brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; color:#e9e7ff; font-size:12px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+    .mark { width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 24px #a78bfa55;color:#100d29;font-size:17px; }
+    .card { position:relative; overflow:hidden; padding:30px; border:1px solid #ffffff1c; border-radius:26px; background:linear-gradient(160deg,#1a1835f5,#111023f5); box-shadow:0 24px 80px #0007; }
+    .card:before { content:""; position:absolute; width:230px;height:230px;right:-140px;top:-140px;border-radius:50%;background:#8b5cf633;filter:blur(10px);pointer-events:none; }
+    .scene { height:130px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:20px; }
+    .orbit { position:absolute;width:120px;height:120px;border:1px solid #9b8cff45;border-radius:50%; }
+    .orbit:before,.orbit:after { content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 14px var(--accent2); }
+    .orbit:before { top:18px;left:7px; }.orbit:after { right:1px;bottom:23px;background:var(--accent);box-shadow:0 0 14px var(--accent); }
+    .orb { z-index:1;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 32% 27%,#fff 0%,#c4b5fd 12%,#8b5cf6 45%,#4c1d95 80%);box-shadow:0 0 25px #a78bfa88,inset -7px -10px 15px #2e1065; }
+    .platform { position:absolute;bottom:7px;width:180px;height:12px;border-radius:50%;border:2px solid #67e8f9aa;transform:perspective(100px) rotateX(45deg);box-shadow:0 0 18px #67e8f944; }
+    h1 { position:relative;margin:0 0 10px;text-align:center;font-size:clamp(25px,6vw,32px);line-height:1.15;letter-spacing:-.04em; }
+    .sub { margin:0 auto 22px;max-width:330px;text-align:center;color:var(--muted);font-size:14px;line-height:1.65; }
+    .notice { display:flex;gap:10px;align-items:flex-start;padding:13px 14px;border:1px solid #a78bfa35;border-radius:14px;background:#8b5cf612;color:#dedaf9;font-size:12px;line-height:1.55; }
+    .notice strong { color:#fff; }
+    .checkrow { display:flex;align-items:flex-start;gap:11px;margin:20px 0 16px;color:#e7e5f7;font-size:13px;line-height:1.5;cursor:pointer; }
+    .checkrow input { appearance:none;flex:0 0 19px;width:19px;height:19px;margin:1px 0 0;border:1px solid #827ca7;border-radius:5px;background:#0d0c1d;cursor:pointer; }
+    .checkrow input:checked { background:var(--accent);border-color:var(--accent); }
+    .checkrow input:checked:after { content:"✓";display:block;text-align:center;color:#17112e;font-weight:900;line-height:17px; }
+    button { width:100%;min-height:50px;border:0;border-radius:14px;background:linear-gradient(100deg,#a78bfa,#67e8f9);color:#12102a;font-weight:850;font-size:14px;letter-spacing:.02em;cursor:pointer;transition:transform .15s,opacity .15s; }
+    button:hover:not(:disabled) { transform:translateY(-1px); } button:disabled { opacity:.38;cursor:not-allowed; }
+    button:focus-visible,input:focus-visible { outline:3px solid #fff;outline-offset:3px; }
+    .status { min-height:22px;margin:12px 0 0;text-align:center;color:var(--muted);font-size:12px; }
+    .destination { margin:14px 0 0;text-align:center;color:#9d9bbd;font-size:11px;overflow-wrap:anywhere; }
+    .destination strong { color:#d7d4f1;font-weight:650; }
+    footer { margin:16px auto 0;text-align:center;color:#777592;font-size:11px;line-height:1.6; }
+    @media(max-width:420px){ body{padding:14px}.card{padding:24px 20px}.scene{height:112px}.orbit{width:104px;height:104px} }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand"><span class="mark" aria-hidden="true">◆</span><span>Portal de acesso</span></div>
+    <section class="card" aria-labelledby="title">
+      <div class="scene" aria-hidden="true"><div class="orbit"></div><div class="orb"></div><div class="platform"></div></div>
+      <h1 id="title">Confirmação de acesso</h1>
+      <p class="sub">Antes de continuar, confira o destino e confirme que deseja abrir o próximo site.</p>
+      <div class="notice"><span aria-hidden="true">ⓘ</span><span><strong>Importante:</strong> esta página apenas registra sua escolha de continuar. Ela não verifica sua identidade e não solicita documentos, senhas ou dados bancários.</span></div>
+      <label class="checkrow" for="consent"><input id="consent" type="checkbox"><span>Confirmo que li o aviso acima e desejo continuar para o endereço indicado abaixo.</span></label>
+      <button id="continueBtn" type="button" disabled>Confirmar e continuar</button>
+      <p class="status" id="status" role="status" aria-live="polite">Marque a confirmação para habilitar o botão.</p>
+      <p class="destination">Destino configurado: <strong id="destinationHost">carregando…</strong></p>
+    </section>
+    <footer>Não informe senhas ou dados pessoais nesta página. Se você precisa de uma verificação de identidade real, use o fluxo oficial e seguro do serviço.</footer>
+  </main>
+  <script>
+    // Edite esta constante para configurar o destino. O endereço aparece na tela antes da confirmação.
+    const DESTINATION_URL = "https://example.com/";
+    const WAIT_MS = 2000; // espera transparente de 2 segundos após clicar em continuar
+
+    const consent = document.getElementById("consent");
+    const continueBtn = document.getElementById("continueBtn");
+    const status = document.getElementById("status");
+    const destinationHost = document.getElementById("destinationHost");
+
+    let destination;
+    try {
+      destination = new URL(DESTINATION_URL);
+      if (destination.protocol !== "https:" && destination.protocol !== "http:") throw new Error("Protocolo inválido");
+      destinationHost.textContent = destination.host;
+    } catch (error) {
+      destinationHost.textContent = "endereço inválido — revise DESTINATION_URL no index.html";
+      consent.disabled = true;
+    }
+
+    consent.addEventListener("change", () => {
+      continueBtn.disabled = !consent.checked || !destination;
+      status.textContent = consent.checked ? "Confirmação marcada. Você pode continuar." : "Marque a confirmação para habilitar o botão.";
+    });
+
+    continueBtn.addEventListener("click", () => {
+      if (!consent.checked || !destination) return;
+      consent.disabled = true;
+      continueBtn.disabled = true;
+      continueBtn.textContent = "Abrindo o destino…";
+      status.textContent = "Você confirmou. O site indicado será aberto em 2 segundos.";
+      window.setTimeout(() => { window.location.assign(destination.href); }, WAIT_MS);
+    });
+  </script>
+</body>
+</html>
